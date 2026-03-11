@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1 class="greeting" id="greeting">Good morning!</h1>
+                <p class="date" id="date">Monday, January 1, 2024</p>
+            </div>
+            <div class="header-right">
+                <div class="time-display" id="time">00:00:00</div>
+                <button class="settings-btn" id="settingsBtn" aria-label="Settings">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Focus Timer -->
+            <section class="card timer-section">
+                <h2 class="section-title">Focus Timer</h2>
+                <div class="timer-container">
+                    <div class="timer-ring" id="timerRing">
+                        <svg class="timer-svg" viewBox="0 0 200 200">
+                            <circle class="timer-bg" cx="100" cy="100" r="90"></circle>
+                            <circle class="timer-progress" id="timerProgress" cx="100" cy="100" r="90"></circle>
+                        </svg>
+                        <div class="timer-display" id="timerDisplay">25:00</div>
+                    </div>
+                    <div class="timer-controls">
+                        <button class="btn btn-primary" id="startBtn">Start</button>
+                        <button class="btn btn-secondary" id="resetBtn">Reset</button>
+                    </div>
+                    <div class="timer-duration">
+                        <label for="durationSelect">Duration:</label>
+                        <select id="durationSelect" class="duration-select">
+                            <option value="15">15 min</option>
+                            <option value="25" selected>25 min</option>
+                            <option value="30">30 min</option>
+                            <option value="45">45 min</option>
+                            <option value="60">60 min</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- To-Do List -->
+            <section class="card todo-section">
+                <h2 class="section-title">To-Do List</h2>
+                <div class="todo-input-container">
+                    <input type="text" class="todo-input" id="todoInput" placeholder="Add a new task...">
+                    <button class="btn-add" id="addTodoBtn" aria-label="Add task">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </button>
+                </div>
+                <ul class="todo-list" id="todoList">
+                    <!-- Tasks will be rendered here -->
+                </ul>
+                <div class="todo-empty" id="todoEmpty">
+                    <p>No tasks yet. Add one above!</p>
+                </div>
+                <button class="btn-clear" id="clearCompletedBtn">Clear Completed</button>
+            </section>
+
+            <!-- Quick Links -->
+            <section class="card links-section">
+                <h2 class="section-title">Quick Links</h2>
+                <div class="links-grid" id="linksGrid">
+                    <!-- Links will be rendered here -->
+                </div>
+                <button class="btn btn-secondary add-link-btn" id="addLinkBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Add Link
+                </button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="modal-close" id="closeSettingsBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nameInput">Your Name</label>
+                    <input type="text" id="nameInput" placeholder="Enter your name" maxlength="30">
+                </div>
+                <div class="form-group">
+                    <label>Theme</label>
+                    <div class="theme-toggle">
+                        <button class="theme-btn active" id="lightThemeBtn" data-theme="light">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            Light
+                        </button>
+                        <button class="theme-btn" id="darkThemeBtn" data-theme="dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                            Dark
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelSettingsBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveSettingsBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Link Modal -->
+    <div class="modal-overlay" id="addLinkModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add Quick Link</h3>
+                <button class="modal-close" id="closeAddLinkBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="linkNameInput">Name</label>
+                    <input type="text" id="linkNameInput" placeholder="e.g., YouTube" maxlength="30">
+                </div>
+                <div class="form-group">
+                    <label for="linkUrlInput">URL</label>
+                    <input type="url" id="linkUrlInput" placeholder="https://example.com">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelAddLinkBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveLinkBtn">Add Link</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timer Complete Modal -->
+    <div class="modal-overlay" id="timerCompleteModal">
+        <div class="modal modal-center">
+            <div class="modal-header">
+                <h3>🎉 Time's Up!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Great work! Your focus session is complete.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="closeTimerModalBtn">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-message" id="toastMessage"></span>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+
